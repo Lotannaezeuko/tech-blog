@@ -1,8 +1,11 @@
 // src/pages/Post.jsx (inspired by Gillion-style layout)
 import React from "react";
 import { useParams } from "react-router-dom";
+import heroImg from "../assets/1/hero.png";
+import authorImg from "../assets/1/author.png";
 
 const Post = () => {
+  // eslint-disable-next-line no-unused-vars
   const { id } = useParams();
 
   return (
@@ -12,18 +15,18 @@ const Post = () => {
       <div className="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-10">
         {/* Left: Main Content */}
         <div className="md:col-span-2">
-          <div className="text-sm text-blue-500 uppercase mb-2">Business, News</div>
+          <div className="text-sm text-blue-500 uppercase mb-2">Technology</div>
           <h1 className="text-4xl font-bold mb-4">
-            GoPro Action Cameras Are Getting A Serious Upgrade
+            Which MacBook Should You Buy in 2025?
           </h1>
 
           <div className="flex items-center space-x-2 text-gray-500 text-sm mb-6">
             <img
-              src="/assets/profile.jpg"
+              src= {authorImg}
               alt="Author"
               className="w-8 h-8 rounded-full"
             />
-            <span>Lotanna, 2025</span>
+            <span>Lotanna Ezeuko, June 2025</span>
             <span>•</span>
             <span>2 comments</span>
             <span>•</span>
@@ -33,8 +36,8 @@ const Post = () => {
           </div>
 
           <img
-            src="/assets/gopro.jpg"
-            alt="GoPro"
+            src={heroImg}
+            alt="MacBooks in 2025"
             className="w-full h-80 object-cover rounded mb-6"
           />
 
@@ -53,10 +56,11 @@ const Post = () => {
 
 
           <div className="flex flex-wrap gap-2 mt-6">
-            <span className="text-sm bg-gray-200 rounded px-3 py-1">#gopro</span>
-            <span className="text-sm bg-gray-200 rounded px-3 py-1">#news</span>
-            <span className="text-sm bg-gray-200 rounded px-3 py-1">#upgrade</span>
+            <span className="text-sm bg-gray-200 rounded px-3 py-1">#laptop</span>
+            <span className="text-sm bg-gray-200 rounded px-3 py-1">#macbook</span>
+            <span className="text-sm bg-gray-200 rounded px-3 py-1">#m4</span>
             <span className="text-sm bg-gray-200 rounded px-3 py-1">#tech</span>
+            <span className="text-sm bg-gray-200 rounded px-3 py-1">#review</span>
           </div>
         </div>
 
@@ -70,25 +74,25 @@ const Post = () => {
                 <span className="text-xs">📖</span>
               </li>
               <li className="flex justify-between items-center">
-                <span>Is Vinyl Back?</span>
+                <span>Which phone should I get in 2025</span>
                 <span className="text-xs">👀</span>
               </li>
               <li className="flex justify-between items-center">
-                <span>Web Designers: Do Brands Matter?</span>
+                <span>The Beats Pill?</span>
                 <span className="text-xs">💬</span>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-2">Twitter</h3>
+            <h3 className="text-lg font-bold mb-2">X</h3>
             <div className="w-full h-24 bg-gray-100 flex items-center justify-center text-gray-400">
               Embed coming soon
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-2">Facebook</h3>
+            <h3 className="text-lg font-bold mb-2">Tiktok</h3>
             <div className="w-full h-24 bg-gray-100 flex items-center justify-center text-gray-400">
               Embed coming soon
             </div>
@@ -99,29 +103,45 @@ const Post = () => {
       {/* Related Posts */}
       <div className="max-w-6xl mx-auto px-6 py-10">
         <h2 className="text-2xl font-bold mb-6">Related Posts</h2>
+
+        {/* Define related posts manually for full control */}
         <div className="grid md:grid-cols-3 gap-6">
-          {[1, 2, 3].map((item) => (
+            {[
+            {
+                title: "Best Wireless Earbuds Under £100 (2025)",
+                image: "/assets/related/earbuds.jpg",
+                tags: "Tech, Review",
+            },
+            {
+                title: "iPhone 16: Hype or Real Upgrade?",
+                image: "/assets/related/iphone16.jpg",
+                tags: "Phones, Reviews",
+            },
+            {
+                title: "This Budget Laptop Surprised Me – Full Review",
+                image: "/assets/related/laptop.jpg",
+                tags: "Laptops, Reviews",
+            },
+            ].map((post, index) => (
             <div
-              key={item}
-              className="bg-white rounded shadow hover:shadow-md transition overflow-hidden"
+                key={index}
+                className="bg-white rounded shadow hover:shadow-md transition overflow-hidden"
             >
-              <img
-                src="/assets/related.jpg"
-                alt="Related Post"
+                <img
+                src={post.image}
+                alt={post.title}
                 className="w-full h-36 object-cover"
-              />
-              <div className="p-4">
-                <p className="text-xs text-blue-500 uppercase">Tech, Review</p>
-                <h3 className="font-semibold text-lg">
-                  Why I Switched to Professional Camera
-                </h3>
-              </div>
+                />
+                <div className="p-4">
+                <p className="text-xs text-blue-500 uppercase">{post.tags}</p>
+                <h3 className="font-semibold text-lg">{post.title}</h3>
+                </div>
             </div>
-          ))}
+            ))}
         </div>
-      </div>
-    </div>
-  );
+        </div>
+            </div>
+        );
 };
 
 export default Post;

@@ -1,13 +1,14 @@
 // src/pages/Home.jsx (uses shared Header component)
 import React from "react";
 import { Link } from "react-router-dom";
+import heroImg from "../assets/1/hero.png";
 
 const Home = () => {
   const posts = [
     {
       id: 1,
       title: "The MacBook You Should Buy in 2025",
-      image: "/assets/macbook.jpg",
+      image: heroImg,
     },
     {
       id: 2,
@@ -27,7 +28,7 @@ const Home = () => {
       {/* Featured Post Section */}
       <div className="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-6 items-center">
         <img
-          src="/assets/macbook.jpg"
+          src= {heroImg}
           alt="Featured Post"
           className="w-full h-72 object-cover rounded"
         />
